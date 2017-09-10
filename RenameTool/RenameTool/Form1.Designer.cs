@@ -33,15 +33,12 @@
             this.Path_Button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.filter = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.keyAP = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.keyA = new System.Windows.Forms.TextBox();
             this.keyAA = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.NewNameRule = new System.Windows.Forms.TextBox();
+            this.RenameButton = new System.Windows.Forms.Button();
             this.keyBP = new System.Windows.Forms.TextBox();
             this.keyB = new System.Windows.Forms.TextBox();
             this.keyBA = new System.Windows.Forms.TextBox();
@@ -49,6 +46,15 @@
             this.keyC = new System.Windows.Forms.TextBox();
             this.keyCA = new System.Windows.Forms.TextBox();
             this.ShowResult = new System.Windows.Forms.RichTextBox();
+            this.KeyFilterA = new System.Windows.Forms.CheckBox();
+            this.KeyFilterB = new System.Windows.Forms.CheckBox();
+            this.KeyFilterC = new System.Windows.Forms.CheckBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.CountMode = new System.Windows.Forms.CheckBox();
+            this.IndexStart = new System.Windows.Forms.NumericUpDown();
+            this.InfoOutput = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IndexStart)).BeginInit();
             this.SuspendLayout();
             // 
             // PathLabel
@@ -58,7 +64,7 @@
             this.PathLabel.Location = new System.Drawing.Point(94, 12);
             this.PathLabel.Name = "PathLabel";
             this.PathLabel.ReadOnly = true;
-            this.PathLabel.Size = new System.Drawing.Size(549, 21);
+            this.PathLabel.Size = new System.Drawing.Size(584, 21);
             this.PathLabel.TabIndex = 0;
             this.PathLabel.Text = "...";
             // 
@@ -67,7 +73,7 @@
             this.Path_Button.Location = new System.Drawing.Point(13, 10);
             this.Path_Button.Name = "Path_Button";
             this.Path_Button.Size = new System.Drawing.Size(75, 23);
-            this.Path_Button.TabIndex = 1;
+            this.Path_Button.TabIndex = 0;
             this.Path_Button.Text = "Path";
             this.Path_Button.UseVisualStyleBackColor = true;
             this.Path_Button.Click += new System.EventHandler(this.Path_Button_Click);
@@ -86,44 +92,16 @@
             this.filter.Location = new System.Drawing.Point(12, 65);
             this.filter.Name = "filter";
             this.filter.Size = new System.Drawing.Size(310, 21);
-            this.filter.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.Red;
-            this.label2.Location = new System.Drawing.Point(11, 105);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "关键字正则表达式A：";
+            this.filter.TabIndex = 1;
+            this.filter.TextChanged += new System.EventHandler(this.RefreshResultTextBox);
             // 
             // keyAP
             // 
             this.keyAP.Location = new System.Drawing.Point(12, 120);
             this.keyAP.Name = "keyAP";
             this.keyAP.Size = new System.Drawing.Size(100, 21);
-            this.keyAP.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.ForeColor = System.Drawing.Color.Green;
-            this.label3.Location = new System.Drawing.Point(11, 160);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 12);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "关键字正则表达式B：";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Blue;
-            this.label4.Location = new System.Drawing.Point(11, 215);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(119, 12);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "关键字正则表达式C：";
+            this.keyAP.TabIndex = 2;
+            this.keyAP.TextChanged += new System.EventHandler(this.RefreshResultTextBox);
             // 
             // keyA
             // 
@@ -131,13 +109,15 @@
             this.keyA.Name = "keyA";
             this.keyA.Size = new System.Drawing.Size(100, 21);
             this.keyA.TabIndex = 3;
+            this.keyA.TextChanged += new System.EventHandler(this.RefreshResultTextBox);
             // 
             // keyAA
             // 
             this.keyAA.Location = new System.Drawing.Point(222, 120);
             this.keyAA.Name = "keyAA";
             this.keyAA.Size = new System.Drawing.Size(100, 21);
-            this.keyAA.TabIndex = 3;
+            this.keyAA.TabIndex = 4;
+            this.keyAA.TextChanged += new System.EventHandler(this.RefreshResultTextBox);
             // 
             // label5
             // 
@@ -148,83 +128,195 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "重命名：";
             // 
-            // textBox13
+            // NewNameRule
             // 
-            this.textBox13.Location = new System.Drawing.Point(12, 283);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(310, 21);
-            this.textBox13.TabIndex = 3;
+            this.NewNameRule.Location = new System.Drawing.Point(12, 283);
+            this.NewNameRule.Name = "NewNameRule";
+            this.NewNameRule.Size = new System.Drawing.Size(310, 21);
+            this.NewNameRule.TabIndex = 11;
+            this.NewNameRule.TextChanged += new System.EventHandler(this.RefreshResultTextBox);
             // 
-            // button2
+            // RenameButton
             // 
-            this.button2.Location = new System.Drawing.Point(116, 326);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "重命名";
-            this.button2.UseVisualStyleBackColor = true;
+            this.RenameButton.Enabled = false;
+            this.RenameButton.Location = new System.Drawing.Point(222, 326);
+            this.RenameButton.Name = "RenameButton";
+            this.RenameButton.Size = new System.Drawing.Size(75, 23);
+            this.RenameButton.TabIndex = 5;
+            this.RenameButton.Text = "重命名";
+            this.RenameButton.UseVisualStyleBackColor = true;
+            this.RenameButton.Click += new System.EventHandler(this.RenameButton_Click);
             // 
             // keyBP
             // 
+            this.keyBP.Enabled = false;
             this.keyBP.Location = new System.Drawing.Point(12, 175);
             this.keyBP.Name = "keyBP";
             this.keyBP.Size = new System.Drawing.Size(100, 21);
-            this.keyBP.TabIndex = 3;
+            this.keyBP.TabIndex = 5;
+            this.keyBP.TextChanged += new System.EventHandler(this.RefreshResultTextBox);
             // 
             // keyB
             // 
+            this.keyB.Enabled = false;
             this.keyB.Location = new System.Drawing.Point(116, 175);
             this.keyB.Name = "keyB";
             this.keyB.Size = new System.Drawing.Size(100, 21);
-            this.keyB.TabIndex = 3;
+            this.keyB.TabIndex = 6;
+            this.keyB.TextChanged += new System.EventHandler(this.RefreshResultTextBox);
             // 
             // keyBA
             // 
+            this.keyBA.Enabled = false;
             this.keyBA.Location = new System.Drawing.Point(222, 175);
             this.keyBA.Name = "keyBA";
             this.keyBA.Size = new System.Drawing.Size(100, 21);
-            this.keyBA.TabIndex = 3;
+            this.keyBA.TabIndex = 7;
+            this.keyBA.TextChanged += new System.EventHandler(this.RefreshResultTextBox);
             // 
             // keyCP
             // 
+            this.keyCP.Enabled = false;
             this.keyCP.Location = new System.Drawing.Point(12, 230);
             this.keyCP.Name = "keyCP";
             this.keyCP.Size = new System.Drawing.Size(100, 21);
-            this.keyCP.TabIndex = 3;
+            this.keyCP.TabIndex = 8;
+            this.keyCP.TextChanged += new System.EventHandler(this.RefreshResultTextBox);
             // 
             // keyC
             // 
+            this.keyC.Enabled = false;
             this.keyC.Location = new System.Drawing.Point(116, 230);
             this.keyC.Name = "keyC";
             this.keyC.Size = new System.Drawing.Size(100, 21);
-            this.keyC.TabIndex = 3;
+            this.keyC.TabIndex = 9;
+            this.keyC.TextChanged += new System.EventHandler(this.RefreshResultTextBox);
             // 
             // keyCA
             // 
+            this.keyCA.Enabled = false;
             this.keyCA.Location = new System.Drawing.Point(222, 230);
             this.keyCA.Name = "keyCA";
             this.keyCA.Size = new System.Drawing.Size(100, 21);
-            this.keyCA.TabIndex = 3;
+            this.keyCA.TabIndex = 10;
+            this.keyCA.TextChanged += new System.EventHandler(this.RefreshResultTextBox);
             // 
             // ShowResult
             // 
+            this.ShowResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ShowResult.Location = new System.Drawing.Point(328, 39);
             this.ShowResult.Name = "ShowResult";
             this.ShowResult.ReadOnly = true;
-            this.ShowResult.Size = new System.Drawing.Size(315, 310);
+            this.ShowResult.Size = new System.Drawing.Size(350, 336);
             this.ShowResult.TabIndex = 6;
             this.ShowResult.Text = "";
+            // 
+            // KeyFilterA
+            // 
+            this.KeyFilterA.AutoSize = true;
+            this.KeyFilterA.Checked = true;
+            this.KeyFilterA.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.KeyFilterA.ForeColor = System.Drawing.Color.Red;
+            this.KeyFilterA.Location = new System.Drawing.Point(13, 98);
+            this.KeyFilterA.Name = "KeyFilterA";
+            this.KeyFilterA.Size = new System.Drawing.Size(138, 16);
+            this.KeyFilterA.TabIndex = 7;
+            this.KeyFilterA.Text = "关键字正则表达式A：";
+            this.KeyFilterA.UseVisualStyleBackColor = true;
+            this.KeyFilterA.CheckedChanged += new System.EventHandler(this.KeyFilterA_CheckedChanged);
+            // 
+            // KeyFilterB
+            // 
+            this.KeyFilterB.AutoSize = true;
+            this.KeyFilterB.ForeColor = System.Drawing.Color.Green;
+            this.KeyFilterB.Location = new System.Drawing.Point(12, 153);
+            this.KeyFilterB.Name = "KeyFilterB";
+            this.KeyFilterB.Size = new System.Drawing.Size(138, 16);
+            this.KeyFilterB.TabIndex = 7;
+            this.KeyFilterB.Text = "关键字正则表达式B：";
+            this.KeyFilterB.UseVisualStyleBackColor = true;
+            this.KeyFilterB.CheckedChanged += new System.EventHandler(this.KeyFilterB_CheckedChanged);
+            // 
+            // KeyFilterC
+            // 
+            this.KeyFilterC.AutoSize = true;
+            this.KeyFilterC.ForeColor = System.Drawing.Color.Blue;
+            this.KeyFilterC.Location = new System.Drawing.Point(12, 208);
+            this.KeyFilterC.Name = "KeyFilterC";
+            this.KeyFilterC.Size = new System.Drawing.Size(138, 16);
+            this.KeyFilterC.TabIndex = 7;
+            this.KeyFilterC.Text = "关键字正则表达式C：";
+            this.KeyFilterC.UseVisualStyleBackColor = true;
+            this.KeyFilterC.CheckedChanged += new System.EventHandler(this.KeyFilterC_CheckedChanged);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(14, 311);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(42, 38);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 12;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // CountMode
+            // 
+            this.CountMode.AutoSize = true;
+            this.CountMode.Location = new System.Drawing.Point(84, 311);
+            this.CountMode.Name = "CountMode";
+            this.CountMode.Size = new System.Drawing.Size(72, 16);
+            this.CountMode.TabIndex = 13;
+            this.CountMode.Text = "计数模式";
+            this.CountMode.UseVisualStyleBackColor = true;
+            this.CountMode.CheckedChanged += new System.EventHandler(this.CountMode_CheckedChanged);
+            // 
+            // IndexStart
+            // 
+            this.IndexStart.Enabled = false;
+            this.IndexStart.Location = new System.Drawing.Point(84, 333);
+            this.IndexStart.Maximum = new decimal(new int[] {
+            1215752191,
+            23,
+            0,
+            0});
+            this.IndexStart.Minimum = new decimal(new int[] {
+            1215752191,
+            23,
+            0,
+            -2147483648});
+            this.IndexStart.Name = "IndexStart";
+            this.IndexStart.Size = new System.Drawing.Size(72, 21);
+            this.IndexStart.TabIndex = 14;
+            this.IndexStart.ValueChanged += new System.EventHandler(this.RefreshResultTextBox);
+            // 
+            // InfoOutput
+            // 
+            this.InfoOutput.AutoSize = true;
+            this.InfoOutput.Location = new System.Drawing.Point(15, 366);
+            this.InfoOutput.Name = "InfoOutput";
+            this.InfoOutput.Size = new System.Drawing.Size(65, 12);
+            this.InfoOutput.TabIndex = 15;
+            this.InfoOutput.Text = "waiting...";
             // 
             // rename
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(655, 361);
+            this.ClientSize = new System.Drawing.Size(690, 387);
+            this.Controls.Add(this.InfoOutput);
+            this.Controls.Add(this.IndexStart);
+            this.Controls.Add(this.CountMode);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.KeyFilterC);
+            this.Controls.Add(this.KeyFilterB);
+            this.Controls.Add(this.KeyFilterA);
             this.Controls.Add(this.ShowResult);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.RenameButton);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.keyCA);
             this.Controls.Add(this.keyBA);
             this.Controls.Add(this.keyAA);
@@ -234,8 +326,7 @@
             this.Controls.Add(this.keyCP);
             this.Controls.Add(this.keyBP);
             this.Controls.Add(this.keyAP);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox13);
+            this.Controls.Add(this.NewNameRule);
             this.Controls.Add(this.filter);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Path_Button);
@@ -243,6 +334,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "rename";
             this.Text = "rename";
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.IndexStart)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -254,15 +347,12 @@
         private System.Windows.Forms.Button Path_Button;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox filter;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox keyAP;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox keyA;
         private System.Windows.Forms.TextBox keyAA;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox NewNameRule;
+        private System.Windows.Forms.Button RenameButton;
         private System.Windows.Forms.TextBox keyBP;
         private System.Windows.Forms.TextBox keyB;
         private System.Windows.Forms.TextBox keyBA;
@@ -270,6 +360,13 @@
         private System.Windows.Forms.TextBox keyC;
         private System.Windows.Forms.TextBox keyCA;
         private System.Windows.Forms.RichTextBox ShowResult;
+        private System.Windows.Forms.CheckBox KeyFilterA;
+        private System.Windows.Forms.CheckBox KeyFilterB;
+        private System.Windows.Forms.CheckBox KeyFilterC;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox CountMode;
+        private System.Windows.Forms.NumericUpDown IndexStart;
+        private System.Windows.Forms.Label InfoOutput;
     }
 }
 

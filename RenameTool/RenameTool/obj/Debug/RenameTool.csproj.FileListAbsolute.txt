@@ -8,3 +8,14 @@ F:\project\Csharp\RenameTool\RenameTool\obj\Debug\RenameTool.Resource1.resources
 F:\project\Csharp\RenameTool\RenameTool\obj\Debug\RenameTool.csproj.GenerateResource.Cache
 F:\project\Csharp\RenameTool\RenameTool\obj\Debug\RenameTool.exe
 F:\project\Csharp\RenameTool\RenameTool\obj\Debug\RenameTool.pdb
+F:\project\Csharp\rename\RenameTool\RenameTool\bin\Debug\RenameTool.exe.config
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Debug\RenameTool.exe
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Debug\RenameTool.pdb
+F:\project\Csharp\rename\RenameTool\RenameTool\bin\Debug\RenameTool.exe
+F:\project\Csharp\rename\RenameTool\RenameTool\bin\Debug\RenameTool.pdb
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Debug\RenameTool.csprojResolveAssemblyReference.cache
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Debug\RenameTool.rename.resources
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Debug\RenameTool.Properties.Resources.resources
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Debug\RenameTool.Resource1.resources
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Debug\RenameTool.csproj.GenerateResource.Cache
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Debug\RenameTool.csproj.CoreCompileInputs.cache
