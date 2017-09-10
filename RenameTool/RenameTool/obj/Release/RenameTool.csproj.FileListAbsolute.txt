@@ -1,0 +1,11 @@
+F:\project\Csharp\rename\RenameTool\RenameTool\bin\Release\RenameTool.exe.config
+F:\project\Csharp\rename\RenameTool\RenameTool\bin\Release\RenameTool.exe
+F:\project\Csharp\rename\RenameTool\RenameTool\bin\Release\RenameTool.pdb
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Release\RenameTool.csprojResolveAssemblyReference.cache
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Release\RenameTool.rename.resources
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Release\RenameTool.HelpForm.resources
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Release\RenameTool.Properties.Resources.resources
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Release\RenameTool.csproj.GenerateResource.Cache
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Release\RenameTool.csproj.CoreCompileInputs.cache
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Release\RenameTool.exe
+F:\project\Csharp\rename\RenameTool\RenameTool\obj\Release\RenameTool.pdb

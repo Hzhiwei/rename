@@ -14,6 +14,8 @@ namespace RenameTool
 {
     public partial class rename : Form
     {
+        private delegate void Delegate_OutputInfo(string Info, Color C);
+
         public rename()
         {
             InitializeComponent();
@@ -221,18 +223,17 @@ namespace RenameTool
             O = new List<string>();
 
             Regex reg;
+            Delegate_OutputInfo doi = new Delegate_OutputInfo(OutputInfo);
             try
             {
                 reg = new Regex(RegexString);
-
-                this.InfoOutput.Text = "...";
-                this.InfoOutput.ForeColor = Color.Green;
+                
+                this.Invoke(doi, "...", Color.Green);
 
             }
             catch
             {
-                this.InfoOutput.Text = "正则表达式有误";
-                this.InfoOutput.ForeColor = Color.Red;
+                this.Invoke(doi, "正则表达式有误", Color.Red);
 
                 return;
             }
@@ -258,18 +259,16 @@ namespace RenameTool
         {
             string temp;
             Regex reg;
+            Delegate_OutputInfo doi = new Delegate_OutputInfo(OutputInfo);
             try
             {
                 reg = new Regex(Keys[0] + Keys[1] + Keys[2]);
-
-                this.InfoOutput.Text = "...";
-                this.InfoOutput.ForeColor = Color.Green;
+;
+                this.Invoke(doi, "...", Color.Green);
             }
             catch
             {
-
-                this.InfoOutput.Text = "正则表达式有误";
-                this.InfoOutput.ForeColor = Color.Red;
+                this.Invoke(doi, "正则表达式有误", Color.Red);
                 return "";
             }
             temp = reg.Match(Input).Value;
@@ -384,6 +383,7 @@ namespace RenameTool
             FileInfo files;
             if (RefreshShowResult())
             {
+                Delegate_OutputInfo doi = new Delegate_OutputInfo(OutputInfo);
                 try
                 {
                     for(int index = 0; index < filterFiles.Count; index++)
@@ -391,17 +391,16 @@ namespace RenameTool
                         files = new FileInfo(FilePath + "\\" + filterFiles[index]);
                         files.MoveTo(FilePath + "\\" + renameList[index]);
                     }
-
-                    this.InfoOutput.Text = "批量重命名成功";
-                    this.InfoOutput.ForeColor = Color.Green;
+                    RefreshShowResult();
+                    
+                    this.Invoke(doi, "批量重命名成功", Color.Green);
                 }
                 catch
                 {
-                    this.InfoOutput.Text = "批量重命名未完全成功";
-                    this.InfoOutput.ForeColor = Color.Red;
+                    RefreshShowResult();
+                    this.Invoke(doi, "批量重命名未完全成功", Color.Red);
                 }
             }
-            RefreshShowResult();
         }
 
         private void CountMode_CheckedChanged(object sender, EventArgs e)
@@ -412,8 +411,18 @@ namespace RenameTool
         
         private void HelpKeyEvent(object sender, KeyEventArgs e)
         {
-            HelpForm helpF = new HelpForm();
-            helpF.ShowDialog();
+            if (e.KeyCode == Keys.F1)
+            {
+                HelpForm helpF = new HelpForm();
+                helpF.ShowDialog();
+            }
+        }
+
+        private void OutputInfo(string Info, Color C)
+        {
+            this.InfoOutput.Text = Info;
+            this.InfoOutput.ForeColor = C;
+            this.InfoOutput.Refresh();
         }
     }
 }
