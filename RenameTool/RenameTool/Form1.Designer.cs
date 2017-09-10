@@ -206,6 +206,7 @@
             this.ShowResult.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ShowResult.Location = new System.Drawing.Point(328, 39);
             this.ShowResult.Name = "ShowResult";
             this.ShowResult.ReadOnly = true;
@@ -296,11 +297,12 @@
             // InfoOutput
             // 
             this.InfoOutput.AutoSize = true;
+            this.InfoOutput.ForeColor = System.Drawing.Color.Teal;
             this.InfoOutput.Location = new System.Drawing.Point(15, 366);
             this.InfoOutput.Name = "InfoOutput";
-            this.InfoOutput.Size = new System.Drawing.Size(65, 12);
+            this.InfoOutput.Size = new System.Drawing.Size(47, 12);
             this.InfoOutput.TabIndex = 15;
-            this.InfoOutput.Text = "waiting...";
+            this.InfoOutput.Text = "F1 帮助";
             // 
             // rename
             // 

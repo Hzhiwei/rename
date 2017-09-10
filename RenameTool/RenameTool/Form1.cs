@@ -17,6 +17,9 @@ namespace RenameTool
         public rename()
         {
             InitializeComponent();
+
+            this.KeyPreview = true;
+            this.KeyDown += new KeyEventHandler(HelpKeyEvent);
         }
 
         //选择路径
@@ -405,6 +408,12 @@ namespace RenameTool
         {
             this.IndexStart.Enabled = this.CountMode.Checked;
             RefreshShowResult();
+        }
+        
+        private void HelpKeyEvent(object sender, KeyEventArgs e)
+        {
+            HelpForm helpF = new HelpForm();
+            helpF.ShowDialog();
         }
     }
 }
