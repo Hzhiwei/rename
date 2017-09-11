@@ -384,22 +384,43 @@ namespace RenameTool
             if (RefreshShowResult())
             {
                 Delegate_OutputInfo doi = new Delegate_OutputInfo(OutputInfo);
+                FileStream logFile;
+                StreamWriter logFileWriter;
+
+                if(File.Exists(FilePath + "\\RenameLog.txt"))
+                {
+                    logFile = new FileStream(FilePath + "\\RenameLog.txt", FileMode.Open, FileAccess.Write);
+                }
+                else
+                {
+                    logFile = new FileStream(FilePath + "\\RenameLog.txt", FileMode.Create, FileAccess.Write);
+                }
+                logFileWriter = new StreamWriter(logFile);
+                logFile.Seek(0, SeekOrigin.End);
+                logFileWriter.Write("\n----------------------------------------------\n");
+
                 try
                 {
                     for(int index = 0; index < filterFiles.Count; index++)
                     {
                         files = new FileInfo(FilePath + "\\" + filterFiles[index]);
                         files.MoveTo(FilePath + "\\" + renameList[index]);
+                        logFileWriter.Write(DateTime.Now.ToString() + "    " + filterFiles[index] + " --> " + renameList[index] + "\n");
                     }
                     RefreshShowResult();
                     
                     this.Invoke(doi, "批量重命名成功", Color.Green);
+                    logFileWriter.Write(DateTime.Now.ToString() + "    rename succeed\n\n");
                 }
                 catch
                 {
                     RefreshShowResult();
                     this.Invoke(doi, "批量重命名未完全成功", Color.Red);
+                    logFileWriter.Write(DateTime.Now.ToString() + "    rename abort\n\n");
                 }
+
+                logFileWriter.Close();
+                logFile.Close();
             }
         }
 
