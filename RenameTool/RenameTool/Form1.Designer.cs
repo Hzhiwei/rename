@@ -53,6 +53,7 @@
             this.CountMode = new System.Windows.Forms.CheckBox();
             this.IndexStart = new System.Windows.Forms.NumericUpDown();
             this.InfoOutput = new System.Windows.Forms.Label();
+            this.Counter = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.IndexStart)).BeginInit();
             this.SuspendLayout();
@@ -207,10 +208,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ShowResult.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ShowResult.Location = new System.Drawing.Point(328, 39);
+            this.ShowResult.Location = new System.Drawing.Point(328, 65);
             this.ShowResult.Name = "ShowResult";
             this.ShowResult.ReadOnly = true;
-            this.ShowResult.Size = new System.Drawing.Size(350, 336);
+            this.ShowResult.Size = new System.Drawing.Size(350, 310);
             this.ShowResult.TabIndex = 6;
             this.ShowResult.Text = "";
             // 
@@ -304,11 +305,21 @@
             this.InfoOutput.TabIndex = 15;
             this.InfoOutput.Text = "F1 帮助";
             // 
+            // Counter
+            // 
+            this.Counter.AutoSize = true;
+            this.Counter.Location = new System.Drawing.Point(326, 50);
+            this.Counter.Name = "Counter";
+            this.Counter.Size = new System.Drawing.Size(11, 12);
+            this.Counter.TabIndex = 16;
+            this.Counter.Text = "0";
+            // 
             // rename
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(690, 387);
+            this.Controls.Add(this.Counter);
             this.Controls.Add(this.InfoOutput);
             this.Controls.Add(this.IndexStart);
             this.Controls.Add(this.CountMode);
@@ -369,6 +380,7 @@
         private System.Windows.Forms.CheckBox CountMode;
         private System.Windows.Forms.NumericUpDown IndexStart;
         private System.Windows.Forms.Label InfoOutput;
+        private System.Windows.Forms.Label Counter;
     }
 }
 

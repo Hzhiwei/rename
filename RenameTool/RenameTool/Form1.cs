@@ -154,7 +154,7 @@ namespace RenameTool
                 {
                     if(temp.StartsWith(" "))
                     {
-                        temp.Remove(0, 1);
+                        temp = temp.Remove(0, 1);
                     }
                     else
                     {
@@ -189,6 +189,8 @@ namespace RenameTool
                 }
                 renameList.Add(temp);
             }
+
+            this.Counter.Text = filterFiles.Count.ToString();
 
             this.RenameButton.Enabled = renameAble;
 
