@@ -119,9 +119,9 @@ namespace RenameTool
             }
             if (KeyFilterC.Checked)
             {
-                rules[2].Add(keyBP.Text);
-                rules[2].Add(keyB.Text);
-                rules[2].Add(keyBA.Text);
+                rules[2].Add(keyCP.Text);
+                rules[2].Add(keyC.Text);
+                rules[2].Add(keyCA.Text);
             }
             else
             {
